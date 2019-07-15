@@ -24,9 +24,11 @@ RUN mkdir -p /tmp/nginx && \
     mkdir -p /usr/logs/nginx && \
     chown app -R /tmp/nginx && \
     chown app -R /var/tmp/nginx && \
-    chown app /var/lib/nginx
+    touch /var/lib/nginx/logs/error.log && \
+    chown app /var/lib/nginx/logs/error.log && \
+    chown app -R /var/lib/nginx
 
-ADD nginx.conf /etc/nginx/
+ADD nginx /etc/nginx
 ADD php-fpm.conf /etc/php7/
 ADD run.sh /app/run.sh
 

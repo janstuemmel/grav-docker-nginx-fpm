@@ -1,1 +1,2 @@
-php-fpm & nginx
+nginx
+php-fpm
