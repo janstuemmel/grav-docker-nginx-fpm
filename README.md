@@ -4,9 +4,9 @@
 
 ```sh
 # download
-git clone https://github.com/websitemacherei/grav-docker-fpm-nginx.git
+git clone https://github.com/janstuemmel/grav-docker-nginx-fpm.git
 
-cd grav-docker-fpm-nginx
+cd grav-docker-nginx-fpm
 
 # build 
 docker build -t grav .
