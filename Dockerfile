@@ -29,7 +29,8 @@ RUN mkdir -p /tmp/nginx && \
     chown app -R /var/lib/nginx
 
 ADD nginx /etc/nginx
-ADD php-fpm.conf /etc/php7/
+ADD php/php-fpm.conf /etc/php7/
+ADD php/php.ini /usr/local/etc/php/conf.d/settings.ini
 ADD run.sh /app/run.sh
 
 RUN chmod +x /app/run.sh
