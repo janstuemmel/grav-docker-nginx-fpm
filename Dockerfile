@@ -4,8 +4,8 @@ ENV GRAV_VERSION 1.6.11
 
 RUN addgroup app && adduser -S -u 1000 -s /bin/bash app -G app
 
-RUN apk add --no-cache $PHPIZE_DEPS tzdata bash vim nginx git curl yaml yaml-dev zip htop libcap libzip-dev \
-    freetype-dev libjpeg-turbo-dev libmcrypt-dev libpng-dev \
+RUN apk add --no-cache $PHPIZE_DEPS tzdata bash vim nginx git curl yaml yaml-dev zip htop libcap libzip-dev  \
+    freetype-dev libjpeg-turbo-dev libmcrypt-dev libpng-dev imagemagick-dev \
     php7-fpm php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
     php7-gd php7-iconv php7-mcrypt php7-session php7-zip \
     php7-curl php7-opcache php7-ctype php7-apcu \
@@ -14,9 +14,10 @@ RUN apk add --no-cache $PHPIZE_DEPS tzdata bash vim nginx git curl yaml yaml-dev
 RUN setcap 'cap_net_bind_service=+ep' /usr/sbin/nginx
 
 RUN pecl install yaml zip apcu && \
+    pecl install imagick && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd && \
-    docker-php-ext-enable yaml zip gd apcu 
+    docker-php-ext-enable yaml zip gd apcu imagick
 
 RUN mkdir -p /app && chown app -R /app
 
